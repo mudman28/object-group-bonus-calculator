@@ -41,3 +41,69 @@ const employees = [
 // Ask questions when you don't.
 
 console.log( employees );
+console.log( 'js' );
+
+for( let i = 0; i < employees.length; i++ ){
+  console.log( employees[i] );
+}
+
+function bonusCalculator(employee){
+  let newEmployeeObject = {
+    name: employee.name,
+    totalCompensation: Number(employee.annualSalary)
+  };
+
+  //for( employee of employees){
+    
+    //newEmployeeArray.push({
+      //name: employee.name
+    //});
+
+    // figure out bonusPercentage
+    if ( employee.reviewRating <= 2 ) {
+      newEmployeeObject.bonusPercentage = 0;
+      newEmployeeObject.totalBonus = 0;
+    } else if ( employee.reviewRating == 3 ) {
+      newEmployeeObject.bonusPercentage = .04;
+      newEmployeeObject.totalBonus = employee.annualSalary * .04;
+      newEmployeeObject.totalCompensation += newEmployeeObject.totalBonus;
+    } else if ( employee.reviewRating == 4 ) {
+      newEmployeeObject.bonusPercentage = .06;
+      newEmployeeObject.totalBonus = employee.annualSalary * .06;
+      newEmployeeObject.totalCompensation += newEmployeeObject.totalBonus;
+    } else if ( employee.reviewRating == 5 ) {
+      newEmployeeObject.bonusPercentage = .1;
+      newEmployeeObject.totalBonus = employee.annualSalary * .1;
+      newEmployeeObject.totalCompensation += newEmployeeObject.totalBonus;
+    }
+
+    if ( employee.employeeNumber.length == 4 ) {
+      newEmployeeObject.bonusPercentage += .05;
+    }
+
+    if ( employee.annualSalary > 65000) {
+      newEmployeeObject.bonusPercentage -= .01;
+    }
+
+    if ( newEmployeeObject.bonusPercentage < 0 ) {
+      newEmployeeObject.bonusPercentage = 0;
+    } else if (newEmployeeObject.bonusPercentage > .13 ) { 
+      newEmployeeObject.bonusPercentage = .13;
+    }
+    // figure out totalCompensation
+    
+
+    /*if( employee.annualSalary > 65000){
+      newEmployeeArray.push(totalBonus = .01;
+
+    }
+    */
+  //}
+  return newEmployeeObject;
+}
+
+console.log( bonusCalculator( employees[0] ) );
+console.log( bonusCalculator( employees[1] ) );
+console.log( bonusCalculator( employees[2] ) );
+console.log( bonusCalculator( employees[3] ) );
+console.log( bonusCalculator( employees[4] ) );
